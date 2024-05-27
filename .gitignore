@@ -2,3 +2,4 @@ data/
 inference/
 models/
 *__pycache__/
+nohup.out
