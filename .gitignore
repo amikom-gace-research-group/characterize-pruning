@@ -1,3 +1,4 @@
 data/
 inference/
 models/
+*__pycache__/

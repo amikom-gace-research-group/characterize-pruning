@@ -6,8 +6,7 @@ from torch import nn
 from torch import optim
 
 import config
-from utils import dataloader, iters
-
+from utils import dataloader, iters, saver
 
 def model_setup(model_type):
     weights = config.MODEL_WEIGHTS_MAP[model_type].DEFAULT
@@ -17,8 +16,7 @@ def model_setup(model_type):
     for param in model.parameters():
         param.requires_grad = False
 
-    model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, 100)
-
+    model.head = nn.Linear(model.head.in_features, 102)
     # loss function and optimizer
     loss_fn = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
@@ -42,12 +40,12 @@ def main(args):
 
     torch.save(
         model.state_dict() if args.save_as == 'state-dict' else model,
-        args.save_path)
+        saver.prepare_path(args.save_path))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model', choices=['vgg16', 'efficientnet_v2_l'], required=True, help="DL model to run")
+    parser.add_argument('--model', choices=['swin_v2_s', 'swin_v2_b'], required=True, help="DL model to run")
     parser.add_argument('--dataset', choices=['CIFAR100', 'Flowers102'], default="CIFAR100", required=True, help="Dataset to train the model")
     parser.add_argument('--epochs', default=5, type=int, help="Number of iterations/epochs for training")
     parser.add_argument('--save-path', required=True, help="Where to save the trained model")
@@ -56,5 +54,5 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     print(args)
-    
+
     main(args)
