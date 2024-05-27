@@ -1,0 +1,22 @@
+#+AUTHOR: Rakandhiya Daanii Rachmanto
+
+* Pruning Experimentation 
+This repo is an archive for experiments exploring model pruning. One of the common ways of compressing AI models. 
+
+** Train
+First, it is required to train the base model. Currently, the choice are =swin_v2_s= or =swin_v2_b=. Currently training is also restricted to =Flowers102= dataset. Other configurable options include: epochs, batch size, save path, and save setup (state dict, or full). Python script is executed as follows:
+
+#+begin_src bash
+python3 train.py --dataset Flowers102 --model swin_v2_s --epochs 8 --batch-size 8 --save-as full --save-path ./models/swin_v2_s-Flowers102-1.pth
+#+end_src
+
+Bash script (available as train.sh) is available for automation, the above configurable option is editable inside, one example to execute the bash script in the background:
+
+#+begin_src bash
+chmod +x ./train.sh
+nohup ./train.sh &
+#+end_src
+
+** Prune
+
+** Characterization

@@ -8,6 +8,7 @@ from torch import optim
 import config
 from utils import dataloader, iters, saver
 
+
 def model_setup(model_type):
     weights = config.MODEL_WEIGHTS_MAP[model_type].DEFAULT
     model_class = getattr(models, model_type)
