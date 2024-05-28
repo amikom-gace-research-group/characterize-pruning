@@ -17,7 +17,12 @@ chmod +x ./train.sh
 nohup ./train.sh &
 #+end_src
 
-** Prune
+** Prune (Not tidy yet!)
+To prune, just edit variables inside of =prune.py= as needed, then just execute:
+
+#+begin_src bash
+python3 prune.py
+#+end_src
 
 ** Characterization
 *** Latency

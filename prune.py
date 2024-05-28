@@ -9,10 +9,8 @@ from torch.nn.utils import prune
 
 
 # Model structure
-model = models.efficientnet_v2_l()
-model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, 102)
-state_dict = torch.load('./models/effv2l-flowers-1.pth', map_location=torch.device('cuda'))
-model.load_state_dict(state_dict)
+model = torch.load('./models/vit_b_16-Flowers102-1.pth')
+model.to("cpu")
 print('model loaded!')
 
 
@@ -26,7 +24,7 @@ for name, module in model.named_modules():
 # Apply global unstructured pruning
 prune.global_unstructured(
     parameters_to_prune,
-    pruning_method=prune.L1Unstructured,
+    pruning_method=prune.L1Unstructured,  # or prune.RandomUnstructured
     amount=0.5,  # Pruning 50% of the parameters globally
 )
 
@@ -52,8 +50,11 @@ for name, module in model.named_modules():
 print('model pruned!')
 print(f'Total sparsity: {100 * (1 - total_nonzero_weights / total_weights):.2f}%')
 
+# Save model structure and weights
+torch.save(model, './models/l1-pruned-vit_b_16-Flowers102.pth')
 
-# Save only the state dict
-torch.save(model.state_dict(), './models/pruned-effv2l-flowers-1.pth')
-# Save state dict and model structure
-# torch.save(model, 'pruned_vgg16_entire_model.pth')
+for name, module in model.named_modules():
+    if isinstance(module, nn.Conv2d) or isinstance(module, nn.Linear):
+        module.weight = nn.Parameter(module.weight.to_sparse())
+
+torch.save(model, './models/l1-sparserep-vit_b_16-Flowers102.pth')
