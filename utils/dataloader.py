@@ -1,3 +1,5 @@
+import os
+
 import torch
 from torchvision import datasets
 
@@ -16,3 +18,12 @@ def data_prep(model_type, dataset_str, batch_size):
     testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=False, num_workers=2)
 
     return trainloader, testloader
+
+
+def infer_test_prep(model_type):
+    transform = config.MODEL_WEIGHTS_MAP[model_type].DEFAULT.transforms()
+    image_dir = 'inference'
+    image_files = [os.path.join(image_dir, f) for f in os.listdir(image_dir) if f.endswith('.jpg')]
+    warmup_files = image_files[:10]
+
+    return transform, warmup_files, image_files

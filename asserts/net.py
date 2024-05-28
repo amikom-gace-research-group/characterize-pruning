@@ -1,4 +1,4 @@
 import torchvision.models as models
 
-model = models.swin_v2_s()
+model = models.vit_b_16()
 print(model)

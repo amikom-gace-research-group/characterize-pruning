@@ -1,5 +1,5 @@
 data/
-inference/
+inference/image_*
 models/
-*__pycache__/
+**/__pycache__/
 nohup.out

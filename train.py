@@ -17,7 +17,7 @@ def model_setup(model_type):
     for param in model.parameters():
         param.requires_grad = False
 
-    model.head = nn.Linear(model.head.in_features, 102)
+    model.heads[-1] = nn.Linear(model.heads[-1].in_features, 102)
     # loss function and optimizer
     loss_fn = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
@@ -46,11 +46,11 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model', choices=['swin_v2_s', 'swin_v2_b'], required=True, help="DL model to run")
+    parser.add_argument('--model', choices=list(config.MODEL_WEIGHTS_MAP.keys()), required=True, help="DL model to run")
     parser.add_argument('--dataset', choices=['CIFAR100', 'Flowers102'], default="CIFAR100", required=True, help="Dataset to train the model")
     parser.add_argument('--epochs', default=5, type=int, help="Number of iterations/epochs for training")
     parser.add_argument('--save-path', required=True, help="Where to save the trained model")
-    parser.add_argument('--save-as', choices=['state-dict', 'full'], default='full', help="State-dict will save only weights, full with save the model structure as well")
+    parser.add_argument('--save-as', choices=['state-dict', 'full'], default='full', help="State-dict will save only weights, full will save the model structure as well")
     parser.add_argument('--batch-size', default=32, type=int, help="How many images per batch for both train and test set")
 
     args = parser.parse_args()
