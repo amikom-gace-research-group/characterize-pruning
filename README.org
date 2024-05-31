@@ -31,3 +31,10 @@ To benchmark latency, first, download the following [[https://drive.google.com/d
 #+begin_src bash
 python3 -m benchmark.lat-check --model swin_v2_s --path ./models/swin_v2_s-Flowers102-1.pth
 #+end_src
+
+*** Accuracy
+To benchmark accuracy, only need to execute the below script:
+
+#+begin_src emacs-lisp
+python3 -m benchmark.acc-check --model mobilenet_v3_small --dataset Flowers102 --batch-size 8 --path ./models/mobilenet_v3_small-Flowers102-1.pth
+#+end_src
