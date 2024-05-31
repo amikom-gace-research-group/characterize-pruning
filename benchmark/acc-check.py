@@ -1,43 +1,36 @@
+import argparse
+
 import torch
-import torchvision
-import torchvision.transforms as transforms
-import torchvision.models as models
 from torch import nn
-from torch import optim
-from tqdm import tqdm
+
+import config
+from utils import dataloader, iters
 
 
-# device
-device = "cuda" if torch.cuda.is_available() else "cpu"
+def load_model(path: str):
+    model = torch.load(path).eval()
+    model.to(config.DEVICE)
 
-# Data prep
-transform = models.EfficientNet_V2_L_Weights.DEFAULT.transforms()
-testset = torchvision.datasets.Flowers102(root='./data', split="test", download=True, transform=transform)
-testloader = torch.utils.data.DataLoader(testset, batch_size=4, shuffle=False, num_workers=2)
+    loss_fn = nn.CrossEntropyLoss()
 
-# Model prep
-model = models.efficientnet_v2_l()
-model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, 102)
-state_dict = torch.load('./models/pruned-effv2l-flowers-1.pth', map_location=torch.device('cuda'))
-model.load_state_dict(state_dict)
-model.to(device)
-loss_fn = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)
-
-def test(dataloader, model, loss_fn):
-    size = len(dataloader.dataset)
-    num_batches = len(dataloader)
-    model.eval()
-    test_loss, correct = 0, 0
-    with torch.no_grad():
-        for batch, (X, y) in enumerate(tqdm(dataloader)):
-            X, y = X.to(device), y.to(device)
-            pred = model(X)
-            test_loss += loss_fn(pred, y).item()
-            correct += (pred.argmax(1) == y).type(torch.float).sum().item()
-    test_loss /= num_batches
-    correct /= size
-    print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
+    return model, loss_fn
 
 
-test(testloader, model, loss_fn)
+def main(args):
+    _, testloader = dataloader.data_prep(args.model, args.dataset, args.batch_size)
+    model, loss_fn = load_model(args.path)
+
+    iters.silent_test(testloader, model, loss_fn)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model', choices=list(config.MODEL_WEIGHTS_MAP.keys()), required=True, help="DL model to run")
+    parser.add_argument('--dataset', choices=['CIFAR100', 'Flowers102'], default="CIFAR100", required=True, help="Dataset to train the model")
+    parser.add_argument('--path', required=True, help="Where to save the trained model")
+    parser.add_argument('--batch-size', default=32, type=int, help="How many images per batch for both train and test set")
+
+    args = parser.parse_args()
+    print(args)
+
+    main(args)

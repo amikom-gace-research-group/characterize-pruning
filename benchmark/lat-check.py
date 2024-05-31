@@ -29,7 +29,7 @@ def inference(model, transform, image_files):
             image = transform(image).unsqueeze(0)  # Add batch dimension
             image = image.to(config.DEVICE)
 
-            output = model(image)
+            _ = model(image)
     end = datetime.now()
 
     # calculate total time

@@ -2,18 +2,20 @@
 
 
 models=(
+  # "mobilenet_v3_small"
+  # "mobilenet_v3_large"
+  # "efficientnet_b1"
+  # "efficientnet_b3"
+  # "densenet169"
+  # "densenet201"
   "vit_b_16"
 )
 
 dataset="Flowers102"
 
-function sayConfig() {
-    return 43
-}
-
 for model in "${models[@]}"
 do
-  for i in {2..5}
+  for i in {1..5}
   do
     args=(
       --model $model
@@ -23,7 +25,6 @@ do
       --save-path models/${model}-${dataset}-${i}.pth
     )
 
-    x=sayConfig
     python3 train.py "${args[@]}"
   done
 done

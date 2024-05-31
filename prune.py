@@ -10,7 +10,7 @@ from torch.nn.utils import prune
 
 # Model structure
 model = torch.load('./models/vit_b_16-Flowers102-1.pth')
-model.to("cpu")
+model.to("cpu")  # Frequent crashes on GPU (GTX 950M), so set to CPU
 print('model loaded!')
 
 
