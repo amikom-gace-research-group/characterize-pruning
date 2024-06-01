@@ -26,6 +26,7 @@ Numerous options are available to control for the training process:
 - =--dataset=: Which dataset to use, currently only =Flowers102= is supported.
 - =--model=: Which CNN or Transformer-based model to train. See =config.py= for examples of how to refer to the model to use. Currently 7 models are supported:
 
+
     | Model Name       | argument           |
     |------------------+--------------------|
     | MobileNetV3Small | =mobilenet_v3_small= |
@@ -33,7 +34,7 @@ Numerous options are available to control for the training process:
     | EfficientNetB1   | =efficientnet_b1=    |
     | EfficientNetB3   | =efficientnet_b3=    |
     | DenseNet169      | =densenet169=        |
-    | DenseNet201      | =densenet20=         |
+    | DenseNet201      | =densenet201=        |
     | ViT B16          | =vit_b_16=           |
     
 - =--epochs=: How many epochs are the network is trained for. Defaults to 32.
@@ -78,7 +79,7 @@ Arguments:
 *** Accuracy
 To benchmark accuracy, execute the following script:
 
-#+begin_src emacs-lisp
+#+begin_src bash
 python3 -m benchmark.acc-check --model mobilenet_v3_small --dataset Flowers102 --batch-size 8 --path ./models/mobilenet_v3_small-Flowers102-1.pth
 #+end_src
 
