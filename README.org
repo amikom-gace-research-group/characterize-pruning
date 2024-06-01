@@ -1,4 +1,5 @@
 #+AUTHOR: Rakandhiya Daanii Rachmanto
+#+OPTIONS: ^:nil
 
 * Pruning Experimentation 
 This repo is an archive for experiments exploring model pruning. One of the common ways of compressing AI models. 
@@ -24,7 +25,17 @@ python3 train.py --dataset Flowers102 --model mobilenet_v3_small --epochs 8 --ba
 Numerous options are available to control for the training process:
 - =--dataset=: Which dataset to use, currently only =Flowers102= is supported.
 - =--model=: Which CNN or Transformer-based model to train. See =config.py= for examples of how to refer to the model to use. Currently 7 models are supported:
-  - MobileNetV3Small, MobileNetV3Large, EfficientNetB1, EfficientNetB3, DenseNet169, DenseNet201, ViT B16.
+
+    | Model Name       | argument           |
+    |------------------+--------------------|
+    | MobileNetV3Small | =mobilenet_v3_small= |
+    | MobileNetV3Large | =mobilenet_v3_large= |
+    | EfficientNetB1   | =efficientnet_b1=    |
+    | EfficientNetB3   | =efficientnet_b3=    |
+    | DenseNet169      | =densenet169=        |
+    | DenseNet201      | =densenet20=         |
+    | ViT B16          | =vit_b_16=           |
+    
 - =--epochs=: How many epochs are the network is trained for. Defaults to 32.
 - =--batch-size=: How many images in one batch. Used to split the train and test set.
 - =--save-as=: The =torch.save()= configuration to use. Options are state-dict, or full. State-dict will save the weights, whereas full will save the whole model
@@ -47,7 +58,7 @@ python3 prune.py --path models/mobilenet_v3_small-Flowers102-1.pth --layer-kind 
 The arguments for this script is as follows:
 - =--path=: Location of the .pth file containing the full model to prune.
 - =--layer-kind=: What layers to prune, available options are Linear, Conv2d, or Complete (selecting both Linear and Conv2d).
-- =--pruning-method=: Which pruning method to use. Currently two are supported: (=RandomUnstructured=, =L1Unstructured=).
+- =--pruning-method=: Which pruning method to use. Currently two are supported: =RandomUnstructured=, =L1Unstructured=.
 - =--amount=: How much of the model is going to be pruned. Setting this to 0.5 is equivalent to pruning to 50%.
 - =--global-unstructured=: Set this flag to utilize global unstructured pruning. ALWAYS ENABLE THIS FLAG FOR NOW!
 - =--check-percentage=: Set this flag to see exact numbers of parameters being pruned in each layer.
@@ -72,7 +83,7 @@ python3 -m benchmark.acc-check --model mobilenet_v3_small --dataset Flowers102 -
 #+end_src
 
 Arguments:
-- =--model=: Which model is being tested for latency. This argument is used to select the appropriate preprocessing pipeline to use for the training and test set.
+- =--model=: Which model is being tested for accuracy. This argument is used to select the appropriate preprocessing pipeline to use for the training and test set.
 - =--dataset=: Which dataset to use.
 - =--batch-size=: How many images per batch.
 - =--path=: Path to the .pth file of the model to test.
