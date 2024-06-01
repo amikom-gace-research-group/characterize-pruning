@@ -1,6 +1,6 @@
-numpy @ file:///croot/numpy_and_numpy_base_1708638617955/work/dist/numpy-1.26.4-cp312-cp312-linux_x86_64.whl#sha256=1d700f51d8b4fa684d858c9e3b56b1656bc5c82b6b79ff08d4e3b491c430059f
-pillow @ file:///croot/pillow_1714398848491/work
-psutil @ file:///work/perseverance-python-buildout/croot/psutil_1698863411559/work
+numpy==1.26.4 
+pillow==10.3.0
+psutil==5.9.8 
 scipy==1.13.0
 torch==2.3.0
 torchaudio==2.3.0
