@@ -17,11 +17,11 @@ chmod +x ./train.sh
 nohup ./train.sh &
 #+end_src
 
-** Prune (Not tidy yet!)
-To prune, just edit variables inside of =prune.py= as needed, then just execute:
+** Prune 
+To prune, execute the following:
 
 #+begin_src bash
-python3 prune.py
+python3 prune.py --path models/mobilenet_v3_small-Flowers102-1.pth --layer-kind Complete --pruning-method L1Unstructured --amount 0.8 --global-unstructured --check-percentage
 #+end_src
 
 ** Characterization
