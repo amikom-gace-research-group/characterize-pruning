@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-06-02 Sun 09:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Rakandhiya Daanii Rachmanto" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1c746ba">1. Pruning Experimentation</a>
+<ul>
+<li><a href="#orgc6ac47f">1.1. Project Dependencies</a></li>
+<li><a href="#orgb96f0e6">1.2. Training Base Model</a></li>
+<li><a href="#org87c2d18">1.3. Pruning</a></li>
+<li><a href="#org5f7887c">1.4. Characterization</a>
+<ul>
+<li><a href="#org761ab21">1.4.1. Latency</a></li>
+<li><a href="#orgcb6769f">1.4.2. Accuracy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1c746ba" class="outline-2">
+<h2 id="org1c746ba"><span class="section-number-2">1.</span> Pruning Experimentation</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This repo is an archive for experiments exploring model pruning. One of the common ways of compressing AI models. 
+</p>
+</div>
+
+<div id="outline-container-orgc6ac47f" class="outline-3">
+<h3 id="orgc6ac47f"><span class="section-number-3">1.1.</span> Project Dependencies</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+If using <code>poetry</code>, the dependencies and respective versions are stated in <code>pyproject.toml</code>. For pip, see <code>requirements.txt</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"># If using poetry
+poetry install
+
+# If using pip
+pip install -r requirements.txt
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb96f0e6" class="outline-3">
+<h3 id="orgb96f0e6"><span class="section-number-3">1.2.</span> Training Base Model</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Execute this script to train a base (unpruned) model:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">python3 train.py --dataset Flowers102 --model mobilenet_v3_small --epochs 8 --batch-size 8 --save-as full --save-path ./models/mobilenet_v3_small-Flowers102-1.pth
+</pre>
+</div>
+
+<p>
+Numerous options are available to control for the training process:
+</p>
+<ul class="org-ul">
+<li><code>--dataset</code>: Which dataset to use, currently only <code>Flowers102</code> is supported.</li>
+<li><p>
+<code>--model</code>: Which CNN or Transformer-based model to train. See <code>config.py</code> for examples of how to refer to the model to use. Currently 7 models are supported:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Model Name</th>
+<th scope="col" class="org-left">argument</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MobileNetV3Small</td>
+<td class="org-left"><code>mobilenet_v3_small</code></td>
+</tr>
+
+<tr>
+<td class="org-left">MobileNetV3Large</td>
+<td class="org-left"><code>mobilenet_v3_large</code></td>
+</tr>
+
+<tr>
+<td class="org-left">EfficientNetB1</td>
+<td class="org-left"><code>efficientnet_b1</code></td>
+</tr>
+
+<tr>
+<td class="org-left">EfficientNetB3</td>
+<td class="org-left"><code>efficientnet_b3</code></td>
+</tr>
+
+<tr>
+<td class="org-left">DenseNet169</td>
+<td class="org-left"><code>densenet169</code></td>
+</tr>
+
+<tr>
+<td class="org-left">DenseNet201</td>
+<td class="org-left"><code>densenet201</code></td>
+</tr>
+
+<tr>
+<td class="org-left">ViT B16</td>
+<td class="org-left"><code>vit_b_16</code></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+
+
+<ul class="org-ul">
+<li><code>--epochs</code>: How many epochs are the network is trained for. Defaults to 32.</li>
+<li><code>--batch-size</code>: How many images in one batch. Used to split the train and test set.</li>
+<li><code>--save-as</code>: The <code>torch.save()</code> configuration to use. Options are state-dict, or full. State-dict will save the weights, whereas full will save the whole model</li>
+<li><code>--save-path</code>: Where to save the trained model.</li>
+</ul>
+
+<p>
+Bash script (available as <code>train.sh</code>) is available for automation, the above configurable option is editable inside the bash script, below is an example on how to execute the bash script in the background:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">chmod +x ./train.sh
+nohup ./train.sh &amp;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org87c2d18" class="outline-3">
+<h3 id="org87c2d18"><span class="section-number-3">1.3.</span> Pruning</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+To prune, execute the following:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">python3 prune.py --path models/mobilenet_v3_small-Flowers102-1.pth --layer-kind Complete --pruning-method L1Unstructured --amount 0.8 --global-unstructured --check-percentage
+</pre>
+</div>
+
+<p>
+The arguments for this script is as follows:
+</p>
+<ul class="org-ul">
+<li><code>--path</code>: Location of the .pth file containing the full model to prune.</li>
+<li><code>--layer-kind</code>: What layers to prune, available options are Linear, Conv2d, or Complete (selecting both Linear and Conv2d).</li>
+<li><code>--pruning-method</code>: Which pruning method to use. Currently two are supported: <code>RandomUnstructured</code>, <code>L1Unstructured</code>.</li>
+<li><code>--amount</code>: How much of the model is going to be pruned. Setting this to 0.5 is equivalent to pruning to 50%.</li>
+<li><code>--global-unstructured</code>: Set this flag to utilize global unstructured pruning. ALWAYS ENABLE THIS FLAG FOR NOW!</li>
+<li><code>--check-percentage</code>: Set this flag to see exact numbers of parameters being pruned in each layer.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5f7887c" class="outline-3">
+<h3 id="org5f7887c"><span class="section-number-3">1.4.</span> Characterization</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org761ab21" class="outline-4">
+<h4 id="org761ab21"><span class="section-number-4">1.4.1.</span> Latency</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+To benchmark latency, first, download the following <a href="https://drive.google.com/drive/folders/15mw-dg2lIo0z_AnMbqxBDkf1HFaORXgF?usp=sharing">Bromelia</a> and place the contents (files called image_..) inside the <code>inference/</code> directory. the command to run is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">python3 -m benchmark.lat-check --model efficientnet_b1 --path ./models/efficientnet_b1-Flowers102-1.pth
+</pre>
+</div>
+
+<p>
+Arguments:
+</p>
+<ul class="org-ul">
+<li><code>--model</code>: Which model is being tested for latency. This argument is used to select the appropriate preprocessing pipeline to use for the training and test set.</li>
+<li><code>--path</code>: Path to the .pth file of the model to test.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcb6769f" class="outline-4">
+<h4 id="orgcb6769f"><span class="section-number-4">1.4.2.</span> Accuracy</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+To benchmark accuracy, execute the following script:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">python3 -m benchmark.acc-check --model mobilenet_v3_small --dataset Flowers102 --batch-size 8 --path ./models/mobilenet_v3_small-Flowers102-1.pth
+</pre>
+</div>
+
+<p>
+Arguments:
+</p>
+<ul class="org-ul">
+<li><code>--model</code>: Which model is being tested for accuracy. This argument is used to select the appropriate preprocessing pipeline to use for the training and test set.</li>
+<li><code>--dataset</code>: Which dataset to use.</li>
+<li><code>--batch-size</code>: How many images per batch.</li>
+<li><code>--path</code>: Path to the .pth file of the model to test.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Rakandhiya Daanii Rachmanto</p>
+<p class="date">Created: 2024-06-02 Sun 09:30</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

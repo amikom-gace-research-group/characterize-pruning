@@ -3,6 +3,7 @@
 
 * Pruning Experimentation 
 This repo is an archive for experiments exploring model pruning. One of the common ways of compressing AI models. 
+This README is also available as HTML document in [[README.html]]
 
 ** Project Dependencies 
 If using =poetry=, the dependencies and respective versions are stated in =pyproject.toml=. For pip, see =requirements.txt=.
@@ -26,7 +27,6 @@ Numerous options are available to control for the training process:
 - =--dataset=: Which dataset to use, currently only =Flowers102= is supported.
 - =--model=: Which CNN or Transformer-based model to train. See =config.py= for examples of how to refer to the model to use. Currently 7 models are supported:
 
-
     | Model Name       | argument           |
     |------------------+--------------------|
     | MobileNetV3Small | =mobilenet_v3_small= |
@@ -37,6 +37,7 @@ Numerous options are available to control for the training process:
     | DenseNet201      | =densenet201=        |
     | ViT B16          | =vit_b_16=           |
     
+
 - =--epochs=: How many epochs are the network is trained for. Defaults to 32.
 - =--batch-size=: How many images in one batch. Used to split the train and test set.
 - =--save-as=: The =torch.save()= configuration to use. Options are state-dict, or full. State-dict will save the weights, whereas full will save the whole model
