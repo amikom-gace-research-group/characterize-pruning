@@ -30,6 +30,15 @@ def model_setup(path):
 
 
 # Inference
+def warmup(model, transform, image_files):
+    with torch.no_grad():
+        for _, image_file in enumerate(image_files):
+            image = Image.open(image_file)
+            image = transform(image).unsqueeze(0)  # Add batch dimension
+            image = image.to(config.DEVICE)
+            _ = model(image)
+
+
 def inference(model, transform, image_files, progress_bar=False):
     start = datetime.now()
     with torch.no_grad():
@@ -53,7 +62,7 @@ def inference(model, transform, image_files, progress_bar=False):
 
 
 def main(args):
-    transform, _, infer_images = infer_test_prep(args.model)
+    transform, warmup_images, infer_images = infer_test_prep(args.model)
 
     start_time = datetime.now()
     model, _, _ = model_setup(args.path)
@@ -69,6 +78,7 @@ def main(args):
 
     print(f"Changing weights to dense takes {change_to_dense_delta}s!")
 
+    warmup(model, transform, warmup_images)
     inference(model, transform, infer_images, args.progress_bar)
 
 
