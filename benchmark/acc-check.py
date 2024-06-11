@@ -7,6 +7,14 @@ import config
 from utils import dataloader, iters
 
 
+def change_to_dense(model):
+    for _, module in model.named_modules():
+        if isinstance(module, (nn.Linear, nn.Conv2d)):
+            module.weight = nn.Parameter(module.weight.to_dense())
+            
+    return model
+
+
 def load_model(path: str):
     model = torch.load(path).eval()
     model.to(config.DEVICE)
@@ -19,6 +27,7 @@ def load_model(path: str):
 def main(args):
     _, testloader = dataloader.data_prep(args.model, args.dataset, args.batch_size)
     model, loss_fn = load_model(args.path)
+    model = change_to_dense(model)
 
     iters.silent_test(testloader, model, loss_fn)
 
